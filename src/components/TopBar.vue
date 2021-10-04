@@ -12,6 +12,7 @@
     <v-app-bar-nav-icon
         @click="toggleDrawer"
     />
+
     <v-toolbar-title
         class="font-weight-light text-h5"
         v-text="title"

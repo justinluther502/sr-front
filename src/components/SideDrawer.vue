@@ -5,6 +5,7 @@
       dark
       :right="$vuetify.rtl"
       app
+      absolute
       width="260"
   >
 
@@ -18,16 +19,16 @@
 
     <template #append>
       <div class="pa-4 text-center">
-        <app-btn
+        <v-btn
             block
             class="text-none"
-            color="secondary"
+            color="purple"
         >
           <v-icon left>
             mdi-card-account-mail
           </v-icon>
           Talk to us!
-        </app-btn>
+        </v-btn>
       </div>
     </template>
 
@@ -51,6 +52,22 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="sass">
+#default-drawer
+  .v-list-item
+    margin-bottom: 8px
 
+  .v-list-item::before,
+  .v-list-item::after
+    display: none
+
+  .v-list-group__header__prepend-icon,
+  .v-list-item__icon
+    margin-top: 12px
+    margin-bottom: 12px
+    margin-left: 4px
+
+  &.v-navigation-drawer--mini-variant
+    .v-list-item
+      justify-content: flex-start !important
 </style>

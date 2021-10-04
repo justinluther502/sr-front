@@ -13,7 +13,7 @@
       <v-list-item-title class="text-h3">
         <strong class="mr-1 font-weight-black">Open</strong>
 
-        <span class="primary--text">Water</span>
+        <span class="pink--text">Water</span>
       </v-list-item-title>
     </v-list-item-content>
   </v-list-item>

@@ -1,10 +1,12 @@
 <template>
-  <v-container>
-    <v-row class="text-center">
-      <v-col cols="12">
-        Here is the dashboard.
-      </v-col>
-    </v-row>
+  <v-container
+      id="regular-tables-view"
+      fluid
+      tag="section"
+  >
+    <section class="mb-12 text-center">
+      <h1 class="mb-2 text-h3">Dashboard</h1>
+    </section>
   </v-container>
 </template>
 

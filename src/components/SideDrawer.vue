@@ -2,6 +2,7 @@
   <v-navigation-drawer
       id="side-drawer"
       v-model="drawer"
+      color="black"
       dark
       :right="$vuetify.rtl"
       :mini-variant.sync="mini"

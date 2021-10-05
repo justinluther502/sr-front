@@ -16,22 +16,12 @@ const state = {
     {
       title: 'User Profile',
       icon: 'mdi-account',
-      to: '/components/profile/',
+      to: '/profile/',
     },
     {
       title: 'Rowers',
       icon: 'mdi-account-multiple',
       to: '/rowers/',
-    },
-    {
-      title: 'Hulls',
-      icon: 'mdi-anchor',
-      to: '/hulls/',
-    },
-    {
-      title: 'Crews',
-      icon: 'mdi-account-group',
-      to: '/crews/',
     },
   ],
 }

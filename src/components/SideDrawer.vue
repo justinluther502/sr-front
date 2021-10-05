@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { sync } from 'vuex-pathify'
+import {sync} from 'vuex-pathify'
 import DrawerHeader from "@/components/widgets/DrawerHeader"
 import DrawerList from "@/components/DrawerList"
 
@@ -50,40 +50,11 @@ export default {
     DrawerList
   },
   computed: {
-    drawer: sync('drawer'),
-    mini: sync('mini'),
+    ...sync([
+      'drawer',
+      'mini',
+      'items']),
   },
-  data() {
-    return {
-      items: [
-        {
-          title: 'Dashboard',
-          icon: 'mdi-view-dashboard',
-          to: '/',
-        },
-        {
-          title: 'User Profile',
-          icon: 'mdi-account',
-          to: '/components/profile/',
-        },
-        {
-          title: 'Rowers',
-          icon: 'mdi-account-multiple',
-          to: '/rowers/',
-        },
-        {
-          title: 'Hulls',
-          icon: 'mdi-anchor',
-          to: '/hulls/',
-        },
-        {
-          title: 'Crews',
-          icon: 'mdi-account-group',
-          to: '/crews/',
-        },
-      ]
-    }
-  }
 }
 </script>
 

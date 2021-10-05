@@ -14,16 +14,16 @@
         @click="drawer = !drawer"
     />
     <v-btn
-    class="ml-3 mr-4"
-    elevation="1"
-    fab
-    small
-    @click="mini = !mini"
-  >
-    <v-icon>
-      {{ mini ? 'mdi-format-list-bulleted' : 'mdi-dots-vertical' }}
-    </v-icon>
-  </v-btn>
+        class="ml-3 mr-4"
+        elevation="1"
+        fab
+        small
+        @click="mini = !mini"
+    >
+      <v-icon>
+        {{ mini ? 'mdi-format-list-bulleted' : 'mdi-dots-vertical' }}
+      </v-icon>
+    </v-btn>
 
     <v-toolbar-title
         class="font-weight-light text-h5"
@@ -38,7 +38,7 @@
 <script>
 import Account from "@/components/widgets/Account"
 import GoHome from "@/components/widgets/GoHome"
-import { sync } from 'vuex-pathify'
+import {sync} from 'vuex-pathify'
 
 export default {
   name: "TopBar.vue",
@@ -47,8 +47,10 @@ export default {
     GoHome
   },
   computed: {
-    drawer: sync('drawer'),
-    mini: sync('mini'),
+    ...sync([
+      'drawer',
+      'mini'
+    ]),
   },
 }
 </script>

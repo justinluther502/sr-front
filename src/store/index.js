@@ -23,6 +23,16 @@ const state = {
       icon: 'mdi-account-multiple',
       to: '/rowers/',
     },
+    {
+      title: 'Hulls',
+      icon: 'mdi-account-multiple',
+      to: '/hulls/',
+    },
+    {
+      title: 'Crews',
+      icon: 'mdi-account-group',
+      to: '/crews/',
+    },
   ],
 }
 

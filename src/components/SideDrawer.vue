@@ -48,6 +48,37 @@ export default {
   },
   props: {
     drawer: Boolean,
+  },
+  data() {
+    return {
+      items: [
+        {
+          title: 'Dashboard',
+          icon: 'mdi-view-dashboard',
+          to: '/',
+        },
+        {
+          title: 'User Profile',
+          icon: 'mdi-account',
+          to: '/components/profile/',
+        },
+        {
+          title: 'Rowers',
+          icon: 'mdi-account-multiple',
+          to: '/rowers/',
+        },
+        {
+          title: 'Hulls',
+          icon: 'mdi-anchor',
+          to: '/hulls/',
+        },
+        {
+          title: 'Crews',
+          icon: 'mdi-account-group',
+          to: '/crews/',
+        },
+      ]
+    }
   }
 }
 </script>

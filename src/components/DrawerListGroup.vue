@@ -54,9 +54,7 @@ export default {
       default: () => ({}),
     },
   },
-
   computed: {
-    // gradient: get('user/drawer@gradient'),
     group() {
       return this.genGroup(this.item.items)
     },

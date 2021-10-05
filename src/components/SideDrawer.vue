@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import { sync } from 'vuex-pathify'
 import DrawerHeader from "@/components/widgets/DrawerHeader"
 import DrawerList from "@/components/DrawerList"
 
@@ -46,8 +47,8 @@ export default {
     DrawerHeader,
     DrawerList
   },
-  props: {
-    drawer: Boolean,
+  computed: {
+    drawer: sync('drawer')
   },
   data() {
     return {

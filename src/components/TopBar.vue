@@ -1,5 +1,6 @@
 <template>
   <v-app-bar
+      id="top-app-bar"
       app
       absolute
       class="v-bar--underline"
@@ -10,7 +11,7 @@
       flat
   >
     <v-app-bar-nav-icon
-        @click="toggleDrawer"
+        @click="drawer = !drawer"
     />
 
     <v-toolbar-title
@@ -26,6 +27,7 @@
 <script>
 import Account from "@/components/widgets/Account"
 import GoHome from "@/components/widgets/GoHome"
+import { sync } from 'vuex-pathify'
 
 export default {
   name: "TopBar.vue",
@@ -38,11 +40,9 @@ export default {
       title: "Open Water",
     }
   },
-  methods: {
-    toggleDrawer () {
-      this.$emit('toggleDrawer')
-    }
-  }
+  computed: {
+    drawer: sync('drawer'),
+  },
 }
 </script>
 

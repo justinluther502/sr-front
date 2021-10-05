@@ -1,11 +1,8 @@
 <template>
   <v-fade-transition mode="out-in">
     <v-app>
-      <top-bar
-          v-on:toggleDrawer="drawer = !drawer"
-      />
-      <side-drawer :drawer="drawer"
-      />
+      <top-bar/>
+      <side-drawer/>
       <v-main>
         <router-view/>
       </v-main>
@@ -34,10 +31,5 @@ export default {
     TopBar,
     SideDrawer
   },
-  data() {
-    return {
-      drawer: false
-    }
-  }
 }
 </script>

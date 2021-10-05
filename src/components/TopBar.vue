@@ -14,7 +14,7 @@
         @click="drawer = !drawer"
     />
     <v-btn
-        class="ml-3 mr-4"
+        class="ml-3 mr-4 hidden-sm-and-down"
         elevation="1"
         fab
         small

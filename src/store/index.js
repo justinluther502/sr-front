@@ -4,9 +4,9 @@ import pathify, { make } from 'vuex-pathify'
 
 // properties
 const state = {
-  drawer: false,
+  drawer: true,
   drawerImage: true,
-  mini: true,
+  mini: false,
   items: [
     {
       title: 'Dashboard',

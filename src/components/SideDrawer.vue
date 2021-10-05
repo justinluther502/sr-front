@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import {sync} from 'vuex-pathify'
+import { sync } from 'vuex-pathify'
 import DrawerHeader from "@/components/widgets/DrawerHeader"
 import DrawerList from "@/components/DrawerList"
 

@@ -24,7 +24,7 @@
             Date
           </th>
           <th class="primary--text">
-            Hull ID
+            Racing Hull
           </th>
         </tr>
         </thead>
@@ -36,7 +36,7 @@
         >
           <td>{{ boat.id }}</td>
           <td>{{ boat.date }}</td>
-          <td>{{ boat.hull }}</td>
+          <td>{{ boat.hull.year }} {{ boat.hull.make }}</td>
         </tr>
         </tbody>
       </v-simple-table>

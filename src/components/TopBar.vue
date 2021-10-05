@@ -38,7 +38,7 @@
 <script>
 import Account from "@/components/widgets/Account"
 import GoHome from "@/components/widgets/GoHome"
-import {sync} from 'vuex-pathify'
+import { sync } from 'vuex-pathify'
 
 export default {
   name: "TopBar.vue",

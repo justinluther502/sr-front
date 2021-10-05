@@ -1,6 +1,5 @@
 <template>
   <v-app-bar
-      id="top-app-bar"
       app
       absolute
       class="v-bar--underline"
@@ -11,12 +10,24 @@
       flat
   >
     <v-app-bar-nav-icon
+        class="hidden-md-and-up"
         @click="drawer = !drawer"
     />
+    <v-btn
+    class="ml-3 mr-4"
+    elevation="1"
+    fab
+    small
+    @click="mini = !mini"
+  >
+    <v-icon>
+      {{ mini ? 'mdi-format-list-bulleted' : 'mdi-dots-vertical' }}
+    </v-icon>
+  </v-btn>
 
     <v-toolbar-title
         class="font-weight-light text-h5"
-        v-text="title"
+        v-text="$route.name"
     />
     <v-spacer/>
     <go-home/>
@@ -35,13 +46,9 @@ export default {
     Account,
     GoHome
   },
-  data() {
-    return {
-      title: "Open Water",
-    }
-  },
   computed: {
     drawer: sync('drawer'),
+    mini: sync('mini'),
   },
 }
 </script>

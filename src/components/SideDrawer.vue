@@ -4,6 +4,8 @@
       v-model="drawer"
       dark
       :right="$vuetify.rtl"
+      :mini-variant.sync="mini"
+      mini-variant-width="80"
       app
       absolute
       width="260"
@@ -48,7 +50,8 @@ export default {
     DrawerList
   },
   computed: {
-    drawer: sync('drawer')
+    drawer: sync('drawer'),
+    mini: sync('mini'),
   },
   data() {
     return {

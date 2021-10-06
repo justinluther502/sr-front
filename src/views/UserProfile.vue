@@ -177,8 +177,13 @@
 </template>
 
 <script>
+import MaterialCard from "@/components/MaterialCard"
+
 export default {
-  name: "UserProfile.vue"
+  name: "UserProfile.vue",
+  components: {
+    MaterialCard
+  }
 }
 </script>
 

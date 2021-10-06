@@ -32,6 +32,7 @@
           <th class="primary--text">
             MMR
           </th>
+          <th/>
         </tr>
         </thead>
 
@@ -45,6 +46,19 @@
           <td>{{ rower.first_name }}</td>
           <td>{{ rower.height_ft }}' {{ rower.height_in }}"</td>
           <td>{{ rower.mmr }}</td>
+          <td>
+            <v-btn
+                color="purple"
+                dark
+                top
+                left
+                fab
+                x-small
+                :to="{ name: 'Rower Detail', params: { id: rower.id }}"
+            >
+              <v-icon>mdi-account-edit</v-icon>
+            </v-btn>
+          </td>
         </tr>
         </tbody>
       </v-simple-table>
@@ -95,7 +109,6 @@ export default {
         .then(function () {
           // always executed
         })
-  }
-  ,
+  },
 }
 </script>

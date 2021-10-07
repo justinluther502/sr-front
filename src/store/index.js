@@ -4,6 +4,10 @@ import pathify, { make } from 'vuex-pathify'
 
 // properties
 const state = {
+  colors: {
+    appPrimary: 'pink',
+    appSecondary: 'purple',
+  },
   drawer: true,
   drawerImage: true,
   mini: false,

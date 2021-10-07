@@ -12,7 +12,6 @@
         icon="mdi-clipboard-text"
         icon-small
         title="Rowers"
-        color="accent"
     >
       <v-simple-table>
         <thead>

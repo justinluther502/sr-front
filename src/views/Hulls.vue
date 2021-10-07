@@ -11,8 +11,8 @@
     <material-card
         icon="mdi-clipboard-text"
         icon-small
-        title="Rowers"
-        color="accent"
+        title="Hulls"
+        color="white"
     >
       <v-simple-table>
         <thead>
@@ -29,6 +29,7 @@
           <th class="primary--text">
             Year
           </th>
+          <th/>
         </tr>
         </thead>
 
@@ -41,6 +42,19 @@
           <td>{{ hull.make }}</td>
           <td>{{ hull.size }}</td>
           <td>{{ hull.year }}</td>
+          <td>
+            <v-btn
+                color="purple"
+                dark
+                top
+                left
+                fab
+                x-small
+                :to="{ name: 'Hull Detail', params: { id: hull.id }}"
+            >
+              <v-icon>mdi-account-edit</v-icon>
+            </v-btn>
+          </td>
         </tr>
         </tbody>
       </v-simple-table>

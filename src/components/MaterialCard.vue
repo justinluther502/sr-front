@@ -71,11 +71,11 @@
 </template>
 
 <script>
+  import { get } from 'vuex-pathify'
   export default {
     name: 'MaterialCard',
-
     props: {
-      color: String,
+      colors: get('colors'),
       fullHeader: Boolean,
       heading: String,
       icon: String,
@@ -83,7 +83,6 @@
       subtitle: String,
       title: String,
     },
-
     computed: {
       hasHeading () {
         return !!(

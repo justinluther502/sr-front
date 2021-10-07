@@ -1,6 +1,6 @@
 <template>
   <v-container
-      id="rower-detail-view"
+      id="hull-detail-view"
       fluid
       tag="section"
   >
@@ -10,14 +10,14 @@
           md="8"
       >
         <material-card
-            color="primary"
+            color="white"
             icon="mdi-account-outline"
             v-if="show"
         >
           <template #title>
-            Rower Detail—
+            Hull Detail—
             <small class="text-body-1">
-              Edit Rower Data
+              Edit Hull Data
             </small>
           </template>
 
@@ -30,8 +30,8 @@
                 >
                   <v-text-field
                       color="purple"
-                      label="First Name"
-                      v-model="rower.first_name"
+                      label="Make"
+                      v-model="hull.make"
                   />
                 </v-col>
 
@@ -41,36 +41,8 @@
                 >
                   <v-text-field
                       color="purple"
-                      label="Last Name"
-                      v-model="rower.last_name"
-                  />
-                </v-col>
-                <v-col
-                    cols="12"
-                    md="3"
-                >
-                  <v-slider
-                      label="Height - ft"
-                      discrete
-                      min=3
-                      max=8
-                      step=1
-                      thumb-label="always"
-                      v-model="rower.height_ft"
-                  />
-                </v-col>
-                <v-col
-                    cols="12"
-                    md="3"
-                >
-                  <v-slider
-                      label="Height - in."
-                      discrete
-                      min=0
-                      max=12
-                      step=1
-                      thumb-label="always"
-                      v-model="rower.height_in"
+                      label="Size"
+                      v-model="hull.size"
                   />
                 </v-col>
                 <v-col
@@ -79,20 +51,9 @@
                 >
                   <v-text-field
                       color="purple"
-                      label="MMR"
-                      disabled
-                      v-model="rower.mmr"
-                  />
-                </v-col>
-                <v-col
-                    cols="12"
-                    md="3"
-                >
-                  <v-text-field
-                      color="purple"
-                      label="Stroke MMR"
-                      disabled
-                      v-model="rower.stroke_mmr"
+                      label="Year"
+                      v-model="hull.year"
+                      type="number"
                   />
                 </v-col>
               </v-row>
@@ -106,7 +67,8 @@
         <v-btn
             class="text-none"
             color="purple"
-            v-on:click="submitRower"
+            v-on:click="submitHull"
+            dark
         >
           <v-icon>
             mdi-hand-okay
@@ -124,23 +86,23 @@ import MaterialCard from "@/components/MaterialCard"
 const axios = require('axios').default
 
 export default {
-  name: "RowerDetail.vue",
+  name: "HullDetail.vue",
   components: {
     MaterialCard
   },
   data() {
     return {
-      rower: null,
+      hull: null,
       show: false
     }
   },
   mounted() {
-    const tgt = process.env.VUE_APP_BASE_API + 'rowers/' +
+    const tgt = process.env.VUE_APP_BASE_API + 'hulls/' +
         this.$route.params.id + '/'
     axios.get(tgt)
         .then((response) => {
           // handle success
-          this.rower = response.data
+          this.hull = response.data
           this.show = true
         })
         .catch(function (error) {
@@ -152,14 +114,14 @@ export default {
         })
   },
   methods: {
-    submitRower() {
-      const tgt = process.env.VUE_APP_BASE_API + 'rowers/' +
+    submitHull() {
+      const tgt = process.env.VUE_APP_BASE_API + 'hulls/' +
           this.$route.params.id + '/'
-      axios.put(tgt, this.rower)
+      axios.put(tgt, this.hull)
           .then((response) => {
             // handle success
             console.log(response)
-            this.$router.push('/rowers')
+            this.$router.push('/hulls')
           })
           .catch(function (error) {
             // handle error

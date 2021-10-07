@@ -10,7 +10,7 @@
           md="8"
       >
         <material-card
-            color="primary"
+            color="white"
             icon="mdi-account-outline"
         >
           <template #title>

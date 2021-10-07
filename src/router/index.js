@@ -6,6 +6,7 @@ import Rowers from "@/views/Rowers"
 import Hulls from "@/views/Hulls"
 import Teams from "@/views/Teams"
 import RowerDetail from "@/views/RowerDetail"
+import HullDetail from "@/views/HullDetail"
 
 
 Vue.use(VueRouter)
@@ -35,6 +36,11 @@ const routes = [
     path: '/hulls',
     name: 'Racing Hulls',
     component: Hulls
+  },
+  {
+    path: '/hulls/:id',
+    name: 'Hull Detail',
+    component: HullDetail
   },
   {
     path: '/crews',

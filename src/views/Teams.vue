@@ -5,14 +5,14 @@
       tag="section"
   >
     <section class="mb-12 text-center">
-      <h1 class="mb-2 text-h3">Racing Hulls</h1>
+      <h1 class="mb-2 text-h3">Racing Crews</h1>
     </section>
 
     <material-card
         icon="mdi-clipboard-text"
         icon-small
-        title="Rowers"
-        color="accent"
+        title="Crews"
+        color="white"
     >
       <v-simple-table>
         <thead>
@@ -26,6 +26,7 @@
           <th class="primary--text">
             Racing Hull
           </th>
+          <th/>
         </tr>
         </thead>
 
@@ -37,6 +38,19 @@
           <td>{{ boat.id }}</td>
           <td>{{ boat.date }}</td>
           <td>{{ boat.hull.year }} {{ boat.hull.make }}</td>
+          <td>
+            <v-btn
+                color="purple"
+                dark
+                top
+                left
+                fab
+                x-small
+                :to="{ name: 'Team Detail', params: { id: boat.id }}"
+            >
+              <v-icon>mdi-account-edit</v-icon>
+            </v-btn>
+          </td>
         </tr>
         </tbody>
       </v-simple-table>

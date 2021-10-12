@@ -90,9 +90,9 @@
                 >
                   <v-text-field
                       color="purple"
-                      label="Stroke MMR"
+                      label="MMR Uncertainty"
                       disabled
-                      v-model="rower.stroke_mmr"
+                      v-model="rower.mmr_uncertainty"
                   />
                 </v-col>
               </v-row>

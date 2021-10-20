@@ -29,17 +29,12 @@ const state = {
     },
     {
       title: 'Hulls',
-      icon: 'mdi-account-multiple',
+      icon: 'mdi-ferry',
       to: '/hulls/',
     },
     {
-      title: 'Crews',
-      icon: 'mdi-account-group',
-      to: '/crews/',
-    },
-    {
       title: 'Record a Race',
-      icon: 'mdi-rocket-launch',
+      icon: 'mdi-timer',
       to: '/races/',
     },
   ],

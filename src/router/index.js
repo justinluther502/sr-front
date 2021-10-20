@@ -4,7 +4,6 @@ import Dashboard from "@/views/Dashboard"
 import UserProfile from "@/views/UserProfile"
 import Rowers from "@/views/Rowers"
 import Hulls from "@/views/Hulls"
-import Teams from "@/views/Teams"
 import RowerDetail from "@/views/RowerDetail"
 import HullDetail from "@/views/HullDetail"
 import Races from "@/views/Races"
@@ -42,11 +41,6 @@ const routes = [
     path: '/hulls/:id',
     name: 'Hull Detail',
     component: HullDetail
-  },
-  {
-    path: '/crews',
-    name: 'Seatraced Crews',
-    component: Teams
   },
   {
     path: '/races',

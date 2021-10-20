@@ -11,7 +11,7 @@
       >
         <material-card
             color="white"
-            icon="mdi-rocket-launch"
+            icon="mdi-timer"
         >
           <template #title>
             Input a Race

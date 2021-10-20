@@ -7,6 +7,7 @@ import Hulls from "@/views/Hulls"
 import Teams from "@/views/Teams"
 import RowerDetail from "@/views/RowerDetail"
 import HullDetail from "@/views/HullDetail"
+import Races from "@/views/Races"
 
 
 Vue.use(VueRouter)
@@ -47,6 +48,11 @@ const routes = [
     name: 'Seatraced Crews',
     component: Teams
   },
+  {
+    path: '/races',
+    name: 'Race Reports',
+    component: Races
+  }
 ]
 
 const router = new VueRouter({

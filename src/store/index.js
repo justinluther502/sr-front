@@ -37,6 +37,11 @@ const state = {
       icon: 'mdi-account-group',
       to: '/crews/',
     },
+    {
+      title: 'Record a Race',
+      icon: 'mdi-rocket-launch',
+      to: '/races/',
+    },
   ],
 }
 

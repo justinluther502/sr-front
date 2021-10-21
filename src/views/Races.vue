@@ -19,6 +19,39 @@
 
           <v-form>
             <v-container class="py-0">
+              <v-row>
+                <v-col align="center">
+                  <v-date-picker v-model="picker"></v-date-picker>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col
+                    cols="12"
+                    md="6"
+                >
+                  <v-select
+                      color="purple"
+                      label="Winning Boat"
+                      :items="hulls"
+                      item-text="make"
+                      v-model="winboat"
+                      return-object
+                  />
+                </v-col>
+                <v-col
+                    cols="12"
+                    md="6"
+                >
+                  <v-select
+                      color="purple"
+                      label="Losing Boat"
+                      :items="hulls"
+                      item-text="make"
+                      v-model="loseboat"
+                      return-object
+                  />
+                </v-col>
+              </v-row>
               <v-row v-for="(winner, idx) in winners" :key="winner">
                 <v-col
                     cols="12"
@@ -50,15 +83,20 @@
               </v-row>
               <v-row>
                 <v-col>
-                  <v-btn v-on:click="winners.push('asdf')">Add Rowers</v-btn>
+                  <v-btn v-on:click="winners.push('')">Add Rowers</v-btn>
                 </v-col>
                 <v-col>
-                  <v-btn v-on:click="team_size--">Remove Rowers</v-btn>
+                  <v-btn v-on:click="winners.pop()">Remove Rowers</v-btn>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col>
-                  <v-btn v-on:click="submitRower">Submit</v-btn>
+                  <v-checkbox v-model="draw" label="Was this a draw?"/>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col>
+                  <v-btn v-on:click="submitRace">Submit</v-btn>
                 </v-col>
               </v-row>
             </v-container>
@@ -80,19 +118,63 @@ export default {
   },
   data() {
     return {
+      picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() *
+          60000)).toISOString().substr(0, 10),
+      draw: false,
       winners: [],
       losers: [],
+      winboat: null,
+      loseboat: null,
       race: {
         first: "",
         second: "",
       },
       rowers: null,
+      hulls: null
     }
   },
   methods: {
-    submitRower() {
+    getRowers() {
+      const tgt = process.env.VUE_APP_BASE_API + 'rowers/'
+      axios.get(tgt)
+          .then((response) => {
+            // handle success
+            this.rowers = response.data
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error)
+          })
+          .then(function () {
+            // always executed
+          })
+    },
+    getHulls() {
+      const tgt = process.env.VUE_APP_BASE_API + 'hulls/'
+      axios.get(tgt)
+          .then((response) => {
+            // handle success
+            this.hulls = response.data
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error)
+          })
+          .then(function () {
+            // always executed
+          })
+    },
+    submitRace() {
       const tgt = process.env.VUE_APP_BASE_API + 'races/'
-      axios.post(tgt, this.race)
+      var race = {}
+      race.date = this.picker
+      race.winner_hull = this.winboat
+      race.loser_hull = this.loseboat
+      race.winner_crew = this.winners
+      race.loser_crew = this.losers
+      race.draw = this.draw
+
+      axios.post(tgt, race)
           .then((response) => {
             // handle success
             console.log(response)
@@ -107,19 +189,8 @@ export default {
     },
   },
   mounted() {
-    const tgt = process.env.VUE_APP_BASE_API + 'rowers/'
-    axios.get(tgt)
-        .then((response) => {
-          // handle success
-          this.rowers = response.data
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error)
-        })
-        .then(function () {
-          // always executed
-        })
+    this.getRowers()
+    this.getHulls()
   },
 }
 </script>

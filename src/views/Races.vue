@@ -30,9 +30,8 @@
                       :items="rowers"
                       item-text="last_name"
                       v-model="winners[idx]"
+                      return-object
                   />
-                  {{winner}}
-                  {{idx}}
                 </v-col>
 
                 <v-col
@@ -43,9 +42,9 @@
                       color="purple"
                       label="Loser"
                       :items="rowers"
-                      item-value="id"
                       item-text="last_name"
                       v-model="losers[idx]"
+                      return-object
                   />
                 </v-col>
               </v-row>
@@ -67,7 +66,6 @@
         </material-card>
       </v-col>
     </v-row>
-    {{winners}}
   </v-container>
 </template>
 

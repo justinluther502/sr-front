@@ -27,7 +27,7 @@
                       v-model="picker"
                   ></v-date-picker>
                 </v-col>
-                <v-col>
+                <v-col v-if="rowersLoaded && hullsLoaded">
                   <v-row dense>
                     <v-col align="center">
                       <h3>Boats</h3>
@@ -114,13 +114,19 @@
                     </v-col>
                   </v-row>
                   <v-row dense>
-                    <v-col>
-                      <v-btn v-on:click="addCrewMembers">
+                    <v-col align="center">
+                      <v-btn
+                          shaped
+                          color="primary"
+                          v-on:click="addCrewMembers">
                         Bigger Boat
                       </v-btn>
                     </v-col>
-                    <v-col>
-                      <v-btn v-on:click="removeCrewMembers">
+                    <v-col align="center">
+                      <v-btn
+                          shaped
+                          color="primary"
+                          v-on:click="removeCrewMembers">
                         Smaller Boat
                       </v-btn>
                     </v-col>
@@ -142,7 +148,7 @@
                   </v-row>
                   <v-row dense>
                     <v-col>
-                      <v-btn v-on:click="submitRace">Submit</v-btn>
+                      <v-btn block v-on:click="submitRace">Submit</v-btn>
                     </v-col>
                   </v-row>
 
@@ -167,11 +173,13 @@ export default {
   },
   data() {
     return {
+      rowersLoaded: false,
+      hullsLoaded: false,
       picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() *
           60000)).toISOString().substr(0, 10),
       draw: false,
-      winners: [],
-      losers: [],
+      winners: [null],
+      losers: [null],
       winboat: null,
       loseboat: null,
       race: {
@@ -197,6 +205,7 @@ export default {
           .then((response) => {
             // handle success
             this.rowers = response.data
+            this.rowersLoaded = true
           })
           .catch(function (error) {
             // handle error
@@ -212,6 +221,7 @@ export default {
           .then((response) => {
             // handle success
             this.hulls = response.data
+            this.hullsLoaded = true
           })
           .catch(function (error) {
             // handle error

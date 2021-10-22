@@ -76,8 +76,11 @@
                           <h3>Winners</h3>
                         </v-col>
                       </v-row>
-                      <v-row dense v-for="(winner, idx) in winners"
-                             :key="winner">
+                      <v-row
+                          dense
+                          v-for="(winner, idx) in winners"
+                          :key="idx"
+                      >
                         <v-col>
                           <v-select
                               color="purple"
@@ -99,7 +102,11 @@
                           <h3>Losers</h3>
                         </v-col>
                       </v-row>
-                      <v-row dense v-for="(loser, idx) in losers" :key="loser">
+                      <v-row
+                          dense
+                          v-for="(loser, idx) in losers"
+                          :key="idx"
+                      >
                         <v-col>
                           <v-select
                               color="purple"
@@ -233,7 +240,7 @@ export default {
     },
     submitRace() {
       const tgt = process.env.VUE_APP_BASE_API + 'races/'
-      var race = {}
+      let race = {}
       race.date = this.picker
       race.winner_hull = this.winboat
       race.loser_hull = this.loseboat

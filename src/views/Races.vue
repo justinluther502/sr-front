@@ -20,83 +20,132 @@
           <v-form>
             <v-container class="py-0">
               <v-row>
-                <v-col align="center">
-                  <v-date-picker v-model="picker"></v-date-picker>
+                <v-col>
+                  <v-date-picker
+                      color="primary"
+                      landscape
+                      v-model="picker"
+                  ></v-date-picker>
                 </v-col>
-              </v-row>
-              <v-row>
-                <v-col
-                    cols="12"
-                    md="6"
-                >
-                  <v-select
-                      color="purple"
-                      label="Winning Boat"
-                      :items="hulls"
-                      item-text="make"
-                      v-model="winboat"
-                      return-object
-                  />
-                </v-col>
-                <v-col
-                    cols="12"
-                    md="6"
-                >
-                  <v-select
-                      color="purple"
-                      label="Losing Boat"
-                      :items="hulls"
-                      item-text="make"
-                      v-model="loseboat"
-                      return-object
-                  />
-                </v-col>
-              </v-row>
-              <v-row v-for="(winner, idx) in winners" :key="winner">
-                <v-col
-                    cols="12"
-                    md="6"
-                >
-                  <v-select
-                      color="purple"
-                      label="Winner"
-                      :items="rowers"
-                      item-text="last_name"
-                      v-model="winners[idx]"
-                      return-object
-                  />
-                </v-col>
+                <v-col>
+                  <v-row dense>
+                    <v-col align="center">
+                      <h3>Boats</h3>
+                    </v-col>
+                  </v-row>
+                  <v-row dense>
+                    <v-col
+                        cols="12"
+                        md="6"
+                    >
+                      <v-select
+                          color="purple"
+                          label="Winning Boat"
+                          :items="hulls"
+                          item-text="make"
+                          v-model="winboat"
+                          return-object
+                      />
+                    </v-col>
+                    <v-col
+                        cols="12"
+                        md="6"
+                    >
+                      <v-select
+                          color="purple"
+                          label="Losing Boat"
+                          :items="hulls"
+                          item-text="make"
+                          v-model="loseboat"
+                          return-object
+                      />
+                    </v-col>
+                  </v-row>
+                  <v-row dense>
+                    <v-col>
+                      <v-divider/>
+                    </v-col>
+                  </v-row>
+                  <v-row dense>
+                    <v-col
+                        cols="12"
+                        md="6"
+                    >
+                      <v-row dense>
+                        <v-col align="center">
+                          <h3>Winners</h3>
+                        </v-col>
+                      </v-row>
+                      <v-row dense v-for="(winner, idx) in winners"
+                             :key="winner">
+                        <v-col>
+                          <v-select
+                              color="purple"
+                              label="Winner"
+                              :items="rowers"
+                              item-text="last_name"
+                              v-model="winners[idx]"
+                              return-object
+                          />
+                        </v-col>
+                      </v-row>
+                    </v-col>
+                    <v-col
+                        cols="12"
+                        md="6"
+                    >
+                      <v-row dense>
+                        <v-col align="center">
+                          <h3>Losers</h3>
+                        </v-col>
+                      </v-row>
+                      <v-row dense v-for="(loser, idx) in losers" :key="loser">
+                        <v-col>
+                          <v-select
+                              color="purple"
+                              label="Loser"
+                              :items="rowers"
+                              item-text="last_name"
+                              v-model="losers[idx]"
+                              return-object
+                          />
+                        </v-col>
+                      </v-row>
+                    </v-col>
+                  </v-row>
+                  <v-row dense>
+                    <v-col>
+                      <v-btn v-on:click="addCrewMembers">
+                        Bigger Boat
+                      </v-btn>
+                    </v-col>
+                    <v-col>
+                      <v-btn v-on:click="removeCrewMembers">
+                        Smaller Boat
+                      </v-btn>
+                    </v-col>
+                  </v-row>
+                  <v-row>
+                    <v-col>
+                      <v-divider/>
+                    </v-col>
+                  </v-row>
+                  <v-row dense>
+                    <v-col align="center">
+                      <h3>Other Info</h3>
+                    </v-col>
+                  </v-row>
+                  <v-row dense>
+                    <v-col>
+                      <v-checkbox v-model="draw" label="Was this a draw?"/>
+                    </v-col>
+                  </v-row>
+                  <v-row dense>
+                    <v-col>
+                      <v-btn v-on:click="submitRace">Submit</v-btn>
+                    </v-col>
+                  </v-row>
 
-                <v-col
-                    cols="12"
-                    md="6"
-                >
-                  <v-select
-                      color="purple"
-                      label="Loser"
-                      :items="rowers"
-                      item-text="last_name"
-                      v-model="losers[idx]"
-                      return-object
-                  />
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col>
-                  <v-btn v-on:click="winners.push('')">Add Rowers</v-btn>
-                </v-col>
-                <v-col>
-                  <v-btn v-on:click="winners.pop()">Remove Rowers</v-btn>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col>
-                  <v-checkbox v-model="draw" label="Was this a draw?"/>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col>
-                  <v-btn v-on:click="submitRace">Submit</v-btn>
                 </v-col>
               </v-row>
             </v-container>
@@ -134,6 +183,14 @@ export default {
     }
   },
   methods: {
+    addCrewMembers() {
+      this.winners.push('')
+      this.losers.push('')
+    },
+    removeCrewMembers() {
+      this.winners.pop()
+      this.losers.pop()
+    },
     getRowers() {
       const tgt = process.env.VUE_APP_BASE_API + 'rowers/'
       axios.get(tgt)

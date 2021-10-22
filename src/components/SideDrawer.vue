@@ -8,7 +8,6 @@
       :mini-variant.sync="mini"
       mini-variant-width="80"
       app
-      absolute
       width="260"
   >
 

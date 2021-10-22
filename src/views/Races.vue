@@ -124,7 +124,7 @@
                     <v-col align="center">
                       <v-btn
                           shaped
-                          color="primary"
+                          color="cyan"
                           v-on:click="addCrewMembers">
                         Bigger Boat
                       </v-btn>
@@ -132,7 +132,7 @@
                     <v-col align="center">
                       <v-btn
                           shaped
-                          color="primary"
+                          color="cyan"
                           v-on:click="removeCrewMembers">
                         Smaller Boat
                       </v-btn>
@@ -155,7 +155,14 @@
                   </v-row>
                   <v-row dense>
                     <v-col>
-                      <v-btn block v-on:click="submitRace">Submit</v-btn>
+                      <v-btn
+                          block
+                          v-on:click="submitRace"
+                          color="primary"
+                          dark
+                      >
+                        Submit
+                      </v-btn>
                     </v-col>
                   </v-row>
 

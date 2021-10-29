@@ -168,6 +168,35 @@
 
                 </v-col>
               </v-row>
+              <v-snackbar
+                  v-if="results"
+                  v-model="results"
+                  multi-line
+                  centered
+                  timeout=-1
+              >
+                <p>Winners:</p>
+                <p v-for="winner in winners" :key="winner.id">
+                  Rower: {{ winner.last_name }} | Old MMR:
+                  {{ winner.mmr.toFixed(2) }} | New MMR: (add this)
+                </p>
+                <p>Losers:</p>
+                <p v-for="loser in losers" :key="loser.id">
+                  Rower: {{ loser.last_name }} | Old MMR:
+                  {{ loser.mmr.toFixed(2) }} | New MMR: (add this)
+                </p>
+
+                <template v-slot:action="{ attrs }">
+                  <v-btn
+                      color="red"
+                      text
+                      v-bind="attrs"
+                      @click="results = false"
+                  >
+                    Close
+                  </v-btn>
+                </template>
+              </v-snackbar>
             </v-container>
           </v-form>
         </material-card>
@@ -187,6 +216,7 @@ export default {
   },
   data() {
     return {
+      results: false,
       rowersLoaded: false,
       hullsLoaded: false,
       picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() *
@@ -259,6 +289,8 @@ export default {
           .then((response) => {
             // handle success
             console.log(response)
+            this.results = true
+
           })
           .catch(function (error) {
             // handle error

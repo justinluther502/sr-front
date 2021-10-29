@@ -44,7 +44,7 @@
           <td>{{ rower.last_name }}</td>
           <td>{{ rower.first_name }}</td>
           <td>{{ rower.height_ft }}' {{ rower.height_in }}"</td>
-          <td>{{ rower.mmr }}</td>
+          <td>{{ rower.mmr.toFixed(2) }}</td>
           <td>
             <v-btn
                 color="purple"

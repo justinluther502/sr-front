@@ -176,14 +176,16 @@
                   timeout=-1
               >
                 <p>Winners:</p>
-                <p v-for="winner in winners" :key="winner.id">
+                <p v-for="(winner, idx) in winners" :key="winner.id">
                   Rower: {{ winner.last_name }} | Old MMR:
-                  {{ winner.mmr.toFixed(2) }} | New MMR: (add this)
+                  {{ winner.mmr.toFixed(2) }} | New MMR:
+                  {{ winner_resp[idx][0].toFixed(2) }}
                 </p>
                 <p>Losers:</p>
-                <p v-for="loser in losers" :key="loser.id">
+                <p v-for="(loser, idx) in losers" :key="loser.id">
                   Rower: {{ loser.last_name }} | Old MMR:
-                  {{ loser.mmr.toFixed(2) }} | New MMR: (add this)
+                  {{ loser.mmr.toFixed(2) }} | New MMR:
+                  {{ loser_resp[idx][0].toFixed(2) }}
                 </p>
 
                 <template v-slot:action="{ attrs }">
@@ -224,6 +226,8 @@ export default {
       draw: false,
       winners: [null],
       losers: [null],
+      winner_resp: null,
+      loser_resp: null,
       winboat: null,
       loseboat: null,
       race: {
@@ -288,7 +292,8 @@ export default {
       axios.post(tgt, race)
           .then((response) => {
             // handle success
-            console.log(response)
+            this.winner_resp = response.data.winratings
+            this.loser_resp = response.data.loseratings
             this.results = true
 
           })
